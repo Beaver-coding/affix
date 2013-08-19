@@ -2,9 +2,8 @@
 * affix v0.1
 * https://github.com/Lugat/affix
 *
-* Copyright 2013, Lukas Rydygel
-* Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
-* http://creativecommons.org/licenses/by-sa/3.0/
+* Copyright (c) 2013 Squareflower Websolutions - Lukas Rydygel
+* Licensed under the MIT license
 */
 ;(function($, window, document, undefined) {
 
