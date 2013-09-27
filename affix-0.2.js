@@ -1,5 +1,5 @@
 /**
-* affix v0.1
+* affix v0.2
 * https://github.com/Lugat/affix
 *
 * Copyright (c) 2013 Squareflower Websolutions - Lukas Rydygel
@@ -14,7 +14,9 @@
     this.settings = $.extend({
       offset: 'auto',
       helper: 'affix',
-      body: 'affix'
+      body: 'affix',
+      on: function() {},
+      off: function() {}
     }, settings);
     this.name = PLUGIN_NAME;
     this.$element = $(element),
@@ -39,16 +41,30 @@
 
   Plugin.prototype.spy = function() {
 
+    var $body = $('body'),   
+        applied = this.$element.hasClass(this.settings.helper) && $body.hasClass(this.settings.body),
+        added;
+
     if ($(window).scrollTop() > this.offset) {
       
+      added = true;
+      
       this.$element.addClass(this.settings.helper);
-      $('body').addClass(this.settings.body);
+      $body.addClass(this.settings.body);
       
     } else {
       
-      this.$element.removeClass(this.settings.helper);
-      $('body').removeClass(this.settings.body);
+      added = false;
       
+      this.$element.removeClass(this.settings.helper);
+      $body.removeClass(this.settings.body);
+            
+    }
+    
+    if (applied && !added) {
+      this.settings.off.apply(this.$element);
+    } else if (!applied && added) {
+      this.settings.on.apply(this.$element);
     }
 
   };

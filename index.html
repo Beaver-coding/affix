@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>affix v0.1</title>
+    <title>affix v0.2</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="affix-0.1.js"></script>
+    <script src="affix-0.2.js"></script>
     <script>
       $(function() {
         $('.navbar').affix({
-          helper: 'navbar-fixed-top'
+          helper: 'navbar-fixed-top',
+          on: function() {
+            alert('ON!');
+          },
+          off: function() {
+            alert('OFF!');
+          }
         });
       });
     </script>
